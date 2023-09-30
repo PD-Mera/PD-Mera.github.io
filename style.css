@@ -4,8 +4,8 @@ body{
     opacity: 0.6;
     background: url("https://images7.alphacoders.com/705/705196.png") no-repeat;
     background-size: cover;
-    width: 100%;
-    height: auto;
+    width: auto;
+    height: 100%;
   }
   .box{
     width: 450px;
