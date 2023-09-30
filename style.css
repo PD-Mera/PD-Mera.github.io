@@ -1,8 +1,9 @@
 body{
     margin: 0;
     padding: 0;
-    background: url(bg.jpg) no-repeat;
+    background: url(https://images7.alphacoders.com/705/705196.png) no-repeat;
     background-size: cover;
+    opacity: 0.5;
   }
   .box{
     width: 450px;
