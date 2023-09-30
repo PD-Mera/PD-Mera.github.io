@@ -1,7 +1,7 @@
 body{
     margin: 0;
     padding: 0;
-    background: url(https://images7.alphacoders.com/705/705196.png) no-repeat;
+    background: url("https://images7.alphacoders.com/705/705196.png") no-repeat;
     background-size: cover;
     opacity: 0.5;
   }
