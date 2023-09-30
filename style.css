@@ -1,12 +1,15 @@
 body{
     margin: 0;
     padding: 0;
+    opacity: 0.6;
     background: url("https://images7.alphacoders.com/705/705196.png") no-repeat;
     background-size: cover;
+    width: 100%;
+    height: auto;
   }
   .box{
     width: 450px;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(47, 234, 248, 0.4);
     padding: 40px;
     text-align: center;
     margin: auto;
