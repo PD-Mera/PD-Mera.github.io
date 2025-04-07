@@ -1,59 +1,362 @@
-body{
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+/* Color Scheme for Dark and Light Themes */
+:root {
+    --bg-dark: #0d0f1a;
+    --card-dark: #161a2d;
+    --accent: #00f0ff; /* Miku teal */
+    --accent-hover: #00c3e0;
+    --text-primary: #d0faff;
+    --text-muted: #7dd8e7;
+    --bg-light: #e0f8ff; /* Light Miku color */
+    --text-light: #444444; /* Darker text for light theme */
+    --card-light: #b3e6f9; /* Lighter card color */
+    --header-dark: #101425;
+    --header-light: #b3e6f9; /* Lighter header color */
+}
+
+/* Global Reset */
+* {
     margin: 0;
     padding: 0;
-    background-image: url("https://images7.alphacoders.com/705/705196.png") ;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-    background-color: #72d9ff;
-    background-position: center center;
-    width: auto;
-    height: 100%;
-  }
-  .box{
-    width: 450px;
-    background: rgba(0, 0, 0, 0.4);
-    padding: 40px;
-    text-align: center;
-    margin: auto;
-    margin-top: 5%;
-    color: white;
-    font-family: 'Century Gothic',sans-serif;
-  }
-  .box-img{
-    border-radius: 50%;
-    width: 200px;
-    height: 200px;
-  }
-  .box h1{
-    font-size: 40px;
-    letter-spacing: 4px;
-    font-weight: 100;
-  }
-  .box h5{
-    font-size: 20px;
-    letter-spacing: 3px;
-    font-weight: 100;
-  }
-  .box p{
-    text-align: justify;
-  }
-  ul{
-    margin: 0;
-    padding: 0;
-  }
-  .box li{
-    display: inline-block;
-    margin: 6px;
-    list-style: none;
-  }
-  .box li a{
-    color: white;
+    box-sizing: border-box;
+}
+
+/* Body and Font Setup */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg-dark);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* Layout Container */
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Header text color in Dark Theme */
+body.dark-theme header h1 {
+    color: var(--accent); /* Light text color for dark theme */
+}
+
+/* Header text color in Light Theme */
+body.light-theme header h1 {
+    color: var(--text-light); /* Dark text color for light theme */
+}
+
+/* Header background color in Dark Theme */
+body.dark-theme header {
+    background: var(--header-dark); /* Dark background for dark theme */
+}
+
+/* Header background color in Light Theme */
+body.light-theme header {
+    background: var(--header-light); /* Light background for light theme */
+}
+
+/* Navigation links in Dark Theme */
+body.dark-theme .nav-links a {
+    color: var(--text-muted); /* Light text color for dark theme */
+}
+
+/* Navigation links in Light Theme */
+body.light-theme .nav-links a {
+    color: var(--text-light); /* Dark text color for light theme */
+}
+
+/* Navigation links hover in Dark Theme */
+body.dark-theme .nav-links a:hover {
+    color: var(--accent); /* Accent color for hover in dark theme */
+}
+
+/* Navigation links hover in Light Theme */
+body.light-theme .nav-links a:hover {
+    color: var(--accent); /* Accent color for hover in light theme */
+}
+
+header .header-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+header h1 {
+    font-size: 2rem;
+    color: var(--accent);
+    transition: color 0.3s ease;
+}
+
+/* Navigation Links */
+nav {
+    margin-top: 0.5rem;
+}
+
+nav a {
+    margin-right: 1.5rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+    position: relative;
     text-decoration: none;
-    font-size: 60px;
-    transition: all ease-in-out 250ms;
-  }
-  .box li a:hover{
-    color: #b9b9b9;
-  }
-  
+}
+
+nav a:hover {
+    color: var(--accent);
+    text-shadow: 0 0 10px var(--accent);
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: var(--accent);
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* Fun Hover Animation for Projects, Home Links */
+nav a {
+    transform: scale(1);
+    transition: transform 0.3s ease;
+}
+
+nav a:hover {
+    transform: scale(1.2);  /* Make it bigger on hover */
+    color: var(--accent);
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.theme-toggle:hover {
+    color: var(--accent);
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: center;
+    margin-top: 4rem;
+    justify-content: center;
+}
+
+.profile-img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--accent);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+.hero-text {
+    background: var(--card-dark);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 8px 20px rgba(0, 255, 255, 0.05);
+    max-width: 500px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.hero-text:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 255, 255, 0.15);
+}
+
+.hero-text h2 {
+    font-size: 2rem;
+    color: var(--accent);
+    margin-bottom: 1rem;
+}
+
+.hero-text p {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+}
+
+/* Hero Text in Dark Theme */
+body.dark-theme .hero-text h2,
+body.dark-theme .hero-text p {
+    color: var(--text-primary); /* Light text color for dark theme */
+}
+
+/* Hero Text in Light Theme */
+body.light-theme .hero-text h2,
+body.light-theme .hero-text p {
+    color: var(--text-light); /* Darker text color for light theme */
+}
+
+/* Button text color for light/dark theme */
+body.dark-theme .btn {
+    color: #0d0f1a; /* Dark text color for dark theme */
+}
+
+body.light-theme .btn {
+    color: var(--bg-light); /* Dark text color for light theme */
+}
+
+/* Button Styles */
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: var(--accent);
+    color: #0d0f1a; /* Dark text color for dark theme */
+    font-weight: 600;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 255, 255, 0.25);
+}
+
+/* Button hover styles */
+.btn:hover {
+    background: var(--accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 255, 255, 0.4);
+}
+
+/* Button styles when light theme is applied */
+body.light-theme .btn {
+    background: var(--accent); /* Miku accent color for the light theme */
+    color: #111; /* Darker text color for readability in light theme */
+}
+
+/* Button hover styles in light theme */
+body.light-theme .btn:hover {
+    background: var(--accent-hover); /* Accent hover color for light theme */
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 255, 255, 0.4);
+}
+
+/* Contact Icons Section */
+.contact-icons {
+    text-align: center;
+    margin-top: 4rem;
+}
+
+.icons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.icon {
+    font-size: 3rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.icon:hover {
+    color: var(--accent);
+    text-shadow: 0 0 10px var(--accent);
+}
+
+/* Adjustments for mobile responsiveness */
+@media (max-width: 700px) {
+    .hero {
+        flex-direction: column;
+    }
+
+    .profile-img {
+        margin-bottom: 1rem;
+    }
+
+    .hero-text {
+        padding: 1.5rem;
+    }
+
+    .icons {
+        flex-direction: row;
+        gap: 1rem;
+    }
+}
+
+/* Light Theme Styles */
+body.light-theme {
+    background: var(--bg-light); /* Light Miku color */
+    color: var(--text-light); /* Darker text for light theme */
+}
+
+body.light-theme .hero-text {
+    background: var(--card-light); /* Light card color */
+}
+
+body.light-theme .btn {
+    background: var(--accent);
+    color: var(--bg-light);
+}
+
+body.light-theme .nav-links a {
+    color: var(--text-light); /* Darker text for nav links */
+}
+
+body.light-theme .nav-links a:hover {
+    color: var(--accent);
+}
+
+/* Underline Animation (only the glowing line) */
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background-color: var(--accent);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* Button background color in Dark Theme */
+body.dark-theme .btn {
+    background: #00b3cc; /* Darker Miku accent color for dark theme */
+    color: #0d0f1a; /* Dark text color for dark theme */
+}
+
+/* Button background color in Light Theme */
+body.light-theme .btn {
+    background: #00a1b3; /* Darker Miku accent color for light theme */
+    color: #111; /* Darker text color for readability in light theme */
+}
+
+/* Button hover styles in Dark Theme */
+body.dark-theme .btn:hover {
+    background: #00c1d4; /* Darker hover color for dark theme */
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 255, 255, 0.4);
+}
+
+/* Button hover styles in Light Theme */
+body.light-theme .btn:hover {
+    background: #00b3cc; /* Darker hover color for light theme */
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 255, 255, 0.4);
+}
