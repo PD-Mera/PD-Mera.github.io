@@ -431,7 +431,7 @@ body.light-theme .theme-toggle i {
 }
 
 /* Remove underline from the logo link */
-a.logo {
+.logo {
   text-decoration: none;
 }
 
