@@ -2,17 +2,26 @@
 
 /* Color Scheme for Dark and Light Themes */
 :root {
-    --bg-dark: #0d0f1a;
+    --bg-dark: #0f0f0f;
     --card-dark: #161a2d;
-    --accent: #00f0ff; /* Miku teal */
-    --accent-hover: #00c3e0;
-    --text-primary: #d0faff;
-    --text-muted: #7dd8e7;
-    --bg-light: #e0f8ff; /* Light Miku color */
-    --text-light: #444444; /* Darker text for light theme */
-    --card-light: #b3e6f9; /* Lighter card color */
     --header-dark: #101425;
+    --accent-darktheme: #00f0ff; /* Miku teal accent for light theme */
+    --accent-darktheme-hover: #00c3e0;
+    --text-muted-darktheme: #7dd8e7;
+    
+    --bg-light: #e0f8ff; /* Light Miku color */
+    --card-light: #b3e6f9; /* Lighter card color */
     --header-light: #b3e6f9; /* Lighter header color */
+    --accent-lighttheme: #00a5be;  /* Darker Miku accent for dark theme */
+    --accent-lighttheme-hover: #00788a;
+    --text-muted-lighttheme: #1d3235;
+    
+
+    --text-primary: #d0faff;
+    --text-light: #444444; /* Darker text for light theme */
+    
+    
+    
 }
 
 /* Global Reset */
@@ -41,7 +50,7 @@ body {
 
 /* Header text color in Dark Theme */
 body.dark-theme header h1 {
-    color: var(--accent); /* Light text color for dark theme */
+    color: var(--accent-darktheme); /* Light text color for dark theme */
 }
 
 /* Header text color in Light Theme */
@@ -61,7 +70,7 @@ body.light-theme header {
 
 /* Navigation links in Dark Theme */
 body.dark-theme .nav-links a {
-    color: var(--text-muted); /* Light text color for dark theme */
+    color: var(--text-muted-darktheme); /* Light text color for dark theme */
 }
 
 /* Navigation links in Light Theme */
@@ -71,12 +80,12 @@ body.light-theme .nav-links a {
 
 /* Navigation links hover in Dark Theme */
 body.dark-theme .nav-links a:hover {
-    color: var(--accent); /* Accent color for hover in dark theme */
+    color: var(--accent-darktheme); /* Accent color for hover in dark theme */
 }
 
 /* Navigation links hover in Light Theme */
 body.light-theme .nav-links a:hover {
-    color: var(--accent); /* Accent color for hover in light theme */
+    color: var(--accent-lighttheme); /* Accent color for hover in light theme */
 }
 
 header .header-flex {
@@ -89,68 +98,95 @@ header .header-flex {
 
 header h1 {
     font-size: 2rem;
-    color: var(--accent);
+    color: var(--accent-darktheme);
     transition: color 0.3s ease;
 }
 
 /* Navigation Links */
 nav {
-    margin-top: 0.5rem;
+  margin-top: 0.5rem;
 }
 
+/* Default Navigation Link Styling */
 nav a {
-    margin-right: 1.5rem;
-    color: var(--text-muted);
-    font-weight: 500;
-    transition: all 0.3s ease;
-    font-size: 1.1rem;
-    position: relative;
-    text-decoration: none;
+  margin-right: 1.5rem;
+  color: var(--text-muted-lighttheme); /* Default text color for light theme */
+  font-weight: 500;
+  transition: all 0.3s ease;
+  font-size: 1.1rem;
+  position: relative;
+  text-decoration: none;
 }
 
+/* Dark Theme Styling */
+body.dark-theme nav a {
+  color: var(--text-muted-darktheme); /* Default text color for dark theme */
+}
+
+/* Hover Effect for Links in Both Themes */
 nav a:hover {
-    color: var(--accent);
-    text-shadow: 0 0 10px var(--accent);
+  color: var(--accent-darktheme); /* Dark theme accent color for hover */
+  text-shadow: 0 0 10px var(--accent-darktheme); /* Dark theme text-shadow on hover */
 }
 
+/* Underline Animation for Links in Both Themes */
 nav a::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0%;
-    height: 2px;
-    background: var(--accent);
-    transition: width 0.3s ease;
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--accent-darktheme); /* Dark theme accent color */
+  transition: width 0.3s ease;
 }
 
 nav a:hover::after {
-    width: 100%;
+  width: 100%;
 }
 
 /* Fun Hover Animation for Projects, Home Links */
 nav a {
-    transform: scale(1);
-    transition: transform 0.3s ease;
+  transform: scale(1);
+  transition: transform 0.3s ease;
 }
 
 nav a:hover {
-    transform: scale(1.2);  /* Make it bigger on hover */
-    color: var(--accent);
+  transform: scale(1.2);  /* Make it bigger on hover */
+  color: var(--accent-darktheme); /* Dark theme accent color on hover */
+}
+
+/* Light Theme Styling */
+body.light-theme nav a {
+  color: var(--text-muted-lighttheme); /* Light theme text color */
+}
+
+body.light-theme nav a:hover {
+  color: var(--accent-lighttheme); /* Light theme accent color on hover */
+  text-shadow: 0 0 10px var(--accent-lighttheme); /* Light theme text-shadow on hover */
+}
+
+body.light-theme nav a::after {
+  background: var(--accent-lighttheme); /* Light theme underline color */
+}
+
+/* Fun Hover Animation for Links in Light Theme */
+body.light-theme nav a:hover {
+  color: var(--accent-lighttheme); /* Light theme accent color on hover */
 }
 
 /* Theme Toggle Button */
 .theme-toggle {
     background: none;
     border: none;
-    color: var(--text-muted);
+    color: var(--text-muted-lighttheme);
     font-size: 1.5rem;
     cursor: pointer;
     transition: color 0.3s ease;
 }
 
 .theme-toggle:hover {
-    color: var(--accent);
+    color: var(--accent-darktheme);
 }
 
 /* Hero Section */
@@ -168,7 +204,7 @@ nav a:hover {
     height: 180px;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid var(--accent);
+    border: 3px solid var(--accent-darktheme);
     box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
 }
 
@@ -189,13 +225,13 @@ nav a:hover {
 
 .hero-text h2 {
     font-size: 2rem;
-    color: var(--accent);
+    color: var(--accent-darktheme);
     margin-bottom: 1rem;
 }
 
 .hero-text p {
     font-size: 1.1rem;
-    color: var(--text-muted);
+    color: var(--text-muted-lighttheme);
     margin-bottom: 1.5rem;
 }
 
@@ -224,7 +260,7 @@ body.light-theme .btn {
 .btn {
     display: inline-block;
     padding: 0.75rem 1.5rem;
-    background: var(--accent);
+    background: var(--accent-darktheme);
     color: #0d0f1a; /* Dark text color for dark theme */
     font-weight: 600;
     border-radius: 5px;
@@ -234,46 +270,69 @@ body.light-theme .btn {
 
 /* Button hover styles */
 .btn:hover {
-    background: var(--accent-hover);
+    background: var(--accent-darktheme-hover);
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(0, 255, 255, 0.4);
 }
 
 /* Button styles when light theme is applied */
 body.light-theme .btn {
-    background: var(--accent); /* Miku accent color for the light theme */
+    background: var(--accent-lighttheme); /* Miku accent color for the light theme */
     color: #111; /* Darker text color for readability in light theme */
 }
 
 /* Button hover styles in light theme */
 body.light-theme .btn:hover {
-    background: var(--accent-hover); /* Accent hover color for light theme */
+    background: var(--accent-lighttheme-hover); /* Accent hover color for light theme */
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(0, 255, 255, 0.4);
 }
 
 /* Contact Icons Section */
 .contact-icons {
-    text-align: center;
-    margin-top: 4rem;
+  text-align: center;
+  margin-top: 4rem;
 }
 
 .icons {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
 }
 
 .icon {
-    font-size: 3rem;
-    color: var(--text-muted);
-    text-decoration: none;
-    transition: color 0.3s ease;
+  font-size: 3rem;
+  color: var(--text-muted-lighttheme); /* Default color for light theme */
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
+/* Dark Theme Icon Color */
+body.dark-theme .icon {
+  color: var(--text-muted-darktheme); /* Dark theme text color */
+}
+
+/* Hover Effect for Icons in Both Themes */
 .icon:hover {
-    color: var(--accent);
-    text-shadow: 0 0 10px var(--accent);
+  color: var(--accent-darktheme); /* Dark theme hover color */
+  text-shadow: 0 0 10px var(--accent-darktheme); /* Dark theme text-shadow on hover */
+}
+
+/* Dark Theme Hover Effect */
+body.dark-theme .icon:hover {
+  color: var(--accent-darktheme); /* Dark theme accent color on hover */
+  text-shadow: 0 0 10px var(--accent-darktheme); /* Dark theme text-shadow */
+}
+
+/* Light Theme Hover Effect */
+body.light-theme .icon:hover {
+  color: var(--accent-lighttheme); /* Light theme hover color */
+  text-shadow: 0 0 10px var(--accent-lighttheme); /* Light theme text-shadow on hover */
+}
+
+/* Light Theme Icon Color */
+body.light-theme .icon {
+  color: var(--text-muted-lighttheme); /* Light theme text color */
 }
 
 /* Adjustments for mobile responsiveness */
@@ -307,7 +366,7 @@ body.light-theme .hero-text {
 }
 
 body.light-theme .btn {
-    background: var(--accent);
+    background: var(--accent-lighttheme);
     color: var(--bg-light);
 }
 
@@ -316,7 +375,7 @@ body.light-theme .nav-links a {
 }
 
 body.light-theme .nav-links a:hover {
-    color: var(--accent);
+    color: var(--accent-lighttheme);
 }
 
 /* Underline Animation (only the glowing line) */
@@ -327,7 +386,7 @@ body.light-theme .nav-links a:hover {
     left: 0;
     width: 0%;
     height: 2px;
-    background-color: var(--accent);
+    background-color: var(--accent-darktheme);
     transition: width 0.3s ease;
 }
 
@@ -359,4 +418,82 @@ body.light-theme .btn:hover {
     background: #00b3cc; /* Darker hover color for light theme */
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(0, 255, 255, 0.4);
+}
+
+/* Use the accent color for the moon (dark mode) icon */
+body.dark-theme .theme-toggle i {
+  color: var(--accent-darktheme); /* Accent color for the moon icon in dark theme */
+}
+
+/* Use the accent color for the sun (light mode) icon */
+body.light-theme .theme-toggle i {
+  color: #0d0f1a; /* Accent color for the sun icon in light theme */
+}
+
+/* Remove underline from the logo link */
+a.logo {
+  text-decoration: none;
+}
+
+/* Dark Theme - Active Link Styling */
+body.dark-theme .nav-links a.active {
+  color: var(--accent-darktheme); /* Use dark theme accent color for active links */
+  text-shadow: 0 0 10px var(--accent-darktheme); /* Apply glowing effect with dark theme accent */
+}
+
+body.dark-theme .nav-links a.active::after {
+  width: 100%;
+  background-color: var(--accent-darktheme); /* Active link underline color for dark theme */
+}
+
+/* Light Theme - Active Link Styling */
+body.light-theme .nav-links a.active {
+  color: var(--accent-lighttheme); /* Use light theme accent color for active links */
+  text-shadow: 0 0 10px var(--accent-lighttheme); /* Apply glowing effect with light theme accent */
+}
+
+body.light-theme .nav-links a.active::after {
+  width: 100%;
+  background-color: var(--accent-lighttheme); /* Active link underline color for light theme */
+}
+
+/* ################################################ */
+/* Projects Section */
+.projects {
+  margin-top: 3rem;
+}
+
+/* Project Item Styling */
+.project-item {
+  background: var(--card-dark); /* Default to dark theme */
+  padding: 1.5rem;
+  border-radius: 1rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 8px 20px rgba(0, 255, 255, 0.1);
+}
+
+/* Project Item Heading */
+.project-item h3 {
+  color: var(--accent-darktheme); /* Default to dark theme accent */
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Project Item Description */
+.project-item p {
+  color: var(--text-muted-darktheme);
+  margin-bottom: 1.5rem;
+}
+
+/* Light Theme Styles */
+body.light-theme .project-item {
+  background: var(--card-light); /* Light theme card background */
+}
+
+body.light-theme .project-item h3 {
+  color: var(--accent-lighttheme); /* Light theme accent color */
+}
+
+body.light-theme .project-item p {
+  color: var(--text-muted-lighttheme); /* Light theme text color */
 }
